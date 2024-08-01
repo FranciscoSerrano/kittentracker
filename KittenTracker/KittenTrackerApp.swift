@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct KittenTrackerApp: App {
@@ -13,5 +14,6 @@ struct KittenTrackerApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: Foster.self)
     }
 }
