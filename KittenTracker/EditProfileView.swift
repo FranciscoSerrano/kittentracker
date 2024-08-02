@@ -12,6 +12,7 @@ import SwiftData
 struct EditProfileView: View {
     
     @Bindable var foster: Foster
+    @Binding var path: [Foster]
     
     // for image
     @State private var show = false
@@ -32,15 +33,19 @@ struct EditProfileView: View {
                     
                     Spacer()
                     
-                    HStack {
-                        Image(systemName: "chart.xyaxis.line")
-                            .font(.title2)
-                        Text("Track Weight")
-                            .font(.title3)
+                    Button {
+                        path.append(foster)
+                    } label: {
+                        HStack {
+                            Image(systemName: "chart.xyaxis.line")
+                                .font(.title2)
+                            Text("Track Weight")
+                                .font(.title3)
+                        }
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(.pink, in: .rect(cornerRadius: 10))
                     }
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(.pink, in: .rect(cornerRadius: 10))
                 }
                 .listRowBackground(Color(UIColor.systemGroupedBackground))
                 .listRowSeparator(.hidden)
@@ -78,9 +83,9 @@ struct EditProfileView: View {
             } header: {
                 Text("Details")
             } footer: {
-                VStack {
+                VStack(alignment: .leading) {
                     Text("Age will update automatically as your foster grows up once you set it!")
-                    Text("You can also change weight here at anytime but for better tracking tap the log weight button in the tool bar.")
+                    Text("Weight will update automatilly if you tap on track weight.")
                 }
             }
             

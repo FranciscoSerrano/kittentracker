@@ -10,11 +10,8 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @Query(sort: \Foster.name) var fosters: [Foster]
+    @Query(sort: [SortDescriptor(\Foster.name)]) var fosters: [Foster]
     @State private var path = [Foster]()
-    
-    // custom sorting
-    @State private var sortOrder = SortDescriptor(\Foster.name)
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -29,7 +26,9 @@ struct ContentView: View {
             }
             .listStyle(.plain)
             .navigationTitle("Fosters")
-            .navigationDestination(for: Foster.self, destination: EditProfileView.init)
+            .navigationDestination(for: Foster.self) { foster in
+                EditProfileView(foster: foster, path: $path)
+            }
             .toolbar {
                 Button("Add Foster", systemImage: "plus", action: addFoster)
             }
