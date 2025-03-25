@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F320C8E02D92262100558F77 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320C8DF2D92262100558F77 /* NotificationManager.swift */; };
+		F320C8E22D92274900558F77 /* FeedingLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320C8E12D92274900558F77 /* FeedingLogView.swift */; };
+		F329C3AC2C6978A000B0B16F /* KittenWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F329C3AB2C6978A000B0B16F /* KittenWeight.swift */; };
 		F35932D92C5496DE002E39E9 /* KittenTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35932D82C5496DE002E39E9 /* KittenTrackerApp.swift */; };
 		F35932DB2C5496DE002E39E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35932DA2C5496DE002E39E9 /* ContentView.swift */; };
 		F35932DD2C5496DF002E39E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F35932DC2C5496DF002E39E9 /* Assets.xcassets */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F320C8DF2D92262100558F77 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		F320C8E12D92274900558F77 /* FeedingLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedingLogView.swift; sourceTree = "<group>"; };
+		F329C3AB2C6978A000B0B16F /* KittenWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KittenWeight.swift; sourceTree = "<group>"; };
 		F35932D52C5496DE002E39E9 /* KittenTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KittenTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F35932D82C5496DE002E39E9 /* KittenTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KittenTrackerApp.swift; sourceTree = "<group>"; };
 		F35932DA2C5496DE002E39E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +48,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F320C8E32D923FEB00558F77 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F35932DA2C5496DE002E39E9 /* ContentView.swift */,
+				F320C8E12D92274900558F77 /* FeedingLogView.swift */,
+				F35932E62C549707002E39E9 /* KittenListItem.swift */,
+				F35932E82C54BC51002E39E9 /* EditProfileView.swift */,
+				F35932EA2C55683B002E39E9 /* WeightChartView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F35932CC2C5496DE002E39E9 = {
 			isa = PBXGroup;
 			children = (
@@ -61,12 +79,10 @@
 		F35932D72C5496DE002E39E9 /* KittenTracker */ = {
 			isa = PBXGroup;
 			children = (
+				F320C8DF2D92262100558F77 /* NotificationManager.swift */,
 				F35932F32C55DEC7002E39E9 /* Data Models */,
 				F35932D82C5496DE002E39E9 /* KittenTrackerApp.swift */,
-				F35932DA2C5496DE002E39E9 /* ContentView.swift */,
-				F35932E62C549707002E39E9 /* KittenListItem.swift */,
-				F35932E82C54BC51002E39E9 /* EditProfileView.swift */,
-				F35932EA2C55683B002E39E9 /* WeightChartView.swift */,
+				F320C8E32D923FEB00558F77 /* Views */,
 				F35932EE2C55BF6A002E39E9 /* Pofile Components */,
 				F35932DC2C5496DF002E39E9 /* Assets.xcassets */,
 				F35932DE2C5496DF002E39E9 /* Preview Content */,
@@ -94,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				F35932F42C55DED8002E39E9 /* Foster.swift */,
+				F329C3AB2C6978A000B0B16F /* KittenWeight.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -171,7 +188,10 @@
 				F35932F22C55C8B8002E39E9 /* BadgeView.swift in Sources */,
 				F35932EB2C55683B002E39E9 /* WeightChartView.swift in Sources */,
 				F35932F52C55DED8002E39E9 /* Foster.swift in Sources */,
+				F320C8E02D92262100558F77 /* NotificationManager.swift in Sources */,
 				F35932DB2C5496DE002E39E9 /* ContentView.swift in Sources */,
+				F329C3AC2C6978A000B0B16F /* KittenWeight.swift in Sources */,
+				F320C8E22D92274900558F77 /* FeedingLogView.swift in Sources */,
 				F35932E92C54BC51002E39E9 /* EditProfileView.swift in Sources */,
 				F35932D92C5496DE002E39E9 /* KittenTrackerApp.swift in Sources */,
 				F35932E72C549707002E39E9 /* KittenListItem.swift in Sources */,

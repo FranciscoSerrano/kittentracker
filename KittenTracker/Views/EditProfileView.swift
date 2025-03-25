@@ -10,19 +10,23 @@ import PhotosUI
 import SwiftData
 
 struct EditProfileView: View {
-    
     @Bindable var foster: Foster
-    @Binding var path: [Foster]
-    
-    // for image
     @State private var show = false
     @State private var showPicker = false
     @State private var selectedImage: PhotosPickerItem? = nil
     
+    func loadPhoto() {
+        Task { @MainActor in
+            foster.profilePhoto = try await selectedImage?.loadTransferable(type: Data.self)
+        }
+    }
+    
     var body: some View {
         Form {
+            // Profile Header Section
             Section {
-                HStack {
+                VStack(spacing: 16) {
+                    // Profile Image
                     ZStack {
                         if let profileImage = foster.profilePhoto, let uiImage = UIImage(data: profileImage) {
                             ProfileImageView(show: $show, showPicker: $showPicker, profileImage: uiImage)
@@ -30,26 +34,38 @@ struct EditProfileView: View {
                             EmptyImage(showPicker: $showPicker, show: $show)
                         }
                     }
-                    
-                    Spacer()
-                    
-                    Button {
-                        path.append(foster)
-                    } label: {
-                        HStack {
-                            Image(systemName: "chart.xyaxis.line")
-                                .font(.title2)
-                            Text("Track Weight")
-                                .font(.title3)
-                        }
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(.pink, in: .rect(cornerRadius: 10))
-                    }
+                    .frame(maxWidth: .infinity)
                 }
-                .listRowBackground(Color(UIColor.systemGroupedBackground))
-                .listRowSeparator(.hidden)
             }
+            .listRowInsets(EdgeInsets())
+            .listRowBackground(Color(UIColor.secondarySystemGroupedBackground))
+            
+            // Action Buttons - Now in separate sections
+            Section {
+                NavigationLink(destination: FeedingLogView(foster: foster)) {
+                    Label("Feedings", systemImage: "clock.fill")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 12)
+                        .background(.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
+                .listRowInsets(EdgeInsets())
+                
+                NavigationLink(destination: WeightChartView(foster: foster)) {
+                    Label("Weight", systemImage: "chart.xyaxis.line")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 12)
+                        .background(.pink)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
+                .listRowInsets(EdgeInsets())
+            }
+            .listRowBackground(Color(UIColor.secondarySystemGroupedBackground))
+            
             
             TextField("Name", text: $foster.name, axis: .vertical)
                 .font(.title)
@@ -85,7 +101,7 @@ struct EditProfileView: View {
             } footer: {
                 VStack(alignment: .leading) {
                     Text("Age will update automatically as your foster grows up once you set it!")
-                    Text("Weight will update automatilly if you tap on track weight.")
+                    Text("Weight will update automatically if you tap on track weight.")
                 }
             }
             
@@ -103,12 +119,6 @@ struct EditProfileView: View {
         .onChange(of: selectedImage, loadPhoto)
         .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)
-    }
-    
-    func loadPhoto() {
-        Task { @MainActor in
-            foster.profilePhoto = try await selectedImage?.loadTransferable(type: Data.self)
-        }
     }
 }
 

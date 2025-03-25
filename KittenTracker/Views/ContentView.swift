@@ -27,7 +27,7 @@ struct ContentView: View {
             .listStyle(.plain)
             .navigationTitle("Fosters")
             .navigationDestination(for: Foster.self) { foster in
-                EditProfileView(foster: foster, path: $path)
+                EditProfileView(foster: foster)
             }
             .toolbar {
                 Button("Add Foster", systemImage: "plus", action: addFoster)
